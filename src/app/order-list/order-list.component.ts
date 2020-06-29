@@ -9,10 +9,26 @@ import { OrdersService } from "../shared/orders.service";
 })
 export class OrderListComponent implements OnInit {
 
-  constructor(private ordersService:OrdersService){}
-  ngOnInit(): void {
+  constructor(public ordersService:OrdersService){}
+  ngOnInit() {
+    this.getCoffeeOrders();
+  }
+  coffeeOrders; 
+
+  getCoffeeOrders () {
+    this.ordersService.getCoffeeOrders()
+    .subscribe(res =>(this.coffeeOrders = res));
   }
 
+  markCompleted(data) {
+    console.log('data: ',data)
+   return this.ordersService.updateCoffeeOrder(data);
+  }
+
+  deleteOrder = data => this.ordersService.deleteCoffeeOrder(data);
+
+
+  deleteCoffeeOrder(){
+    data => this.ordersService.deleteCoffeeOrder(data);
+  }
 }
-
-

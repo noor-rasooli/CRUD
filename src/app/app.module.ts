@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderListComponent } from './order-list/order-list.component';
 
+import { environment } from "src/environments/environment";
+import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 
 @NgModule({
@@ -20,7 +22,9 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
     BrowserModule,
     AppRoutingModule,
     AngularFirestoreModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [OrdersService],
   bootstrap: [AppComponent]
