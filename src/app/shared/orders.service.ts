@@ -15,6 +15,13 @@ export class OrdersService {
     coffeeOrder: new FormControl(''),
     completed: new FormControl(false)
   })
+
+  increament() {
+    this.form.setValue({
+      capacity: this.form.get("capacity").value + 1
+    });
+  }
+  
   createCoffeeOrder(data) {
     return new Promise<any>((resolve, reject) => {
       this.firestore
